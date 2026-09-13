@@ -48,6 +48,7 @@ over the schema and every row, and is independent of that page layout.
 | command | what it does |
 | --- | --- |
 | `python -m usc build [-o OUT]` | build the `.apkg` from `data/` and `assets/` |
+| `python -m usc build --tts` | same deck, with the Spanish form read aloud |
 | `python -m usc verify REF [-g GEN]` | compare a generated `.apkg` with a reference one |
 | `python -m usc extract REF` | rebuild `data/` and `assets/` from a reference `.apkg` |
 
@@ -67,6 +68,41 @@ USC_REFERENCE_APKG=path/to/Ultimate_Spanish_Conjugation.apkg \
     PYTHONPATH=src python -m unittest discover -s tests
 ```
 
+## Text to speech
+
+`--tts` builds a variant whose cards say the answer -- the conjugated Spanish
+form -- through Anki's built-in text to speech (Anki 2.1.20+, AnkiDroid
+2.16+, AnkiMobile; it uses the voices installed on the device, so nothing is
+downloaded and the deck still ships no media):
+
+```sh
+PYTHONPATH=src python -m usc build --tts -o dist/Ultimate_Spanish_Conjugation_TTS.apkg
+PYTHONPATH=src python -m usc build --tts --tts-voices Apple_Mónica,Microsoft_Helena
+PYTHONPATH=src python -m usc build --tts --tts-lang es_MX --tts-speed 0.8
+```
+
+The variant adds a `Speech` field holding the bare form, and puts
+`{{#Speech}}<div class="tts">{{tts es_ES:Speech}}</div>{{/Speech}}` under the
+answered sentence on the back:
+
+* the front is left untouched -- speaking the answer there would give it away;
+* a form with several accepted variants is spoken as a list, `fuera | fuese`
+  becoming `fuera, fuese`, so the voice pauses between them;
+* the seven orientation cards, whose text is English, stay silent: their
+  `Speech` field is empty and the `{{#Speech}}` conditional drops the tag.
+
+Nothing else changes: the `UUID`, `Prompt`, `Similar` and `Notes` fields, the
+note guids, the ids, the sort fields and the checksums are the same as in the
+published deck, so the variant updates an existing collection rather than
+duplicating it. Because it adds a field to the note type, importing it on top
+of the original deck asks Anki to update that note type; on Anki versions old
+enough to refuse a changed note type (pre-2.1.50), remove the old deck and
+its note type first.
+
+`--tts` is a build option, not a change to the source data: `python -m usc
+build` without it still reproduces the published deck 1:1, and the test suite
+checks both.
+
 ## Layout
 
 ```
@@ -77,6 +113,7 @@ src/usc/
   collection.py    writing collection.anki2, sort fields, checksums
   packaging.py     writing the .apkg zip
   build.py         source data -> .apkg
+  tts.py           the optional text-to-speech variant
   extract.py       reference .apkg -> source data, with a per-note round-trip check
   verify.py        1:1 comparison of two .apkg files
 data/
