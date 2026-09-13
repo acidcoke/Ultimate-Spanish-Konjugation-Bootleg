@@ -1,0 +1,245 @@
+{
+  "col": {
+    "id": 1,
+    "crt": 1507186800,
+    "mod": 1600432663669,
+    "scm": 1600432663000,
+    "ver": 11,
+    "dty": 0,
+    "usn": 0,
+    "ls": 0,
+    "tags": {}
+  },
+  "ids": {
+    "model_id": 1596992551063,
+    "deck_id": 1596992405271,
+    "first_note_id": 1599309962946,
+    "first_card_id": 1599309963864,
+    "first_due": 1923946
+  },
+  "package": {
+    "timestamp": [
+      2020,
+      9,
+      18,
+      22,
+      37,
+      42
+    ],
+    "media": "{}",
+    "entries": [
+      {
+        "name": "collection.anki2",
+        "create_system": 3,
+        "create_version": 20,
+        "extract_version": 20,
+        "external_attr": 2175008768
+      },
+      {
+        "name": "media",
+        "create_system": 3,
+        "create_version": 20,
+        "extract_version": 20,
+        "external_attr": 25165824
+      }
+    ]
+  },
+  "conf": {
+    "activeDecks": [
+      1
+    ],
+    "curDeck": 1,
+    "newSpread": 0,
+    "collapseTime": 1200,
+    "timeLim": 0,
+    "estTimes": true,
+    "dueCounts": true,
+    "curModel": "1600432663014",
+    "nextPos": 1,
+    "sortType": "noteFld",
+    "sortBackwards": false,
+    "addToCur": true,
+    "dayLearnFirst": false,
+    "schedVer": 1,
+    "newBury": true
+  },
+  "models": {
+    "1596992551063": {
+      "id": 1596992551063,
+      "name": "Ultimate Spanish Conjugation [Ankiweb]",
+      "type": 1,
+      "mod": 1599309872,
+      "usn": 0,
+      "sortf": 1,
+      "did": 1596992405271,
+      "tmpls": [
+        {
+          "name": "Cloze",
+          "ord": 0,
+          "qfmt": "@file:card_front.html",
+          "afmt": "@file:card_back.html",
+          "bqfmt": "",
+          "bafmt": "",
+          "did": null,
+          "bfont": "",
+          "bsize": 0
+        }
+      ],
+      "flds": [
+        {
+          "name": "UUID",
+          "ord": 0,
+          "sticky": false,
+          "rtl": false,
+          "font": "Arial",
+          "size": 20
+        },
+        {
+          "name": "Prompt",
+          "ord": 1,
+          "sticky": false,
+          "rtl": false,
+          "font": "Arial",
+          "size": 20
+        },
+        {
+          "name": "Similar",
+          "ord": 2,
+          "sticky": false,
+          "rtl": false,
+          "font": "Arial",
+          "size": 20
+        },
+        {
+          "name": "Notes",
+          "ord": 3,
+          "sticky": false,
+          "rtl": false,
+          "font": "Arial",
+          "size": 20
+        }
+      ],
+      "css": "@file:card.css",
+      "latexPre": "\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n",
+      "latexPost": "\\end{document}",
+      "latexsvg": false,
+      "req": [
+        [
+          0,
+          "any",
+          [
+            1
+          ]
+        ]
+      ],
+      "tags": []
+    }
+  },
+  "decks": {
+    "1": {
+      "newToday": [
+        0,
+        0
+      ],
+      "revToday": [
+        0,
+        0
+      ],
+      "lrnToday": [
+        0,
+        0
+      ],
+      "timeToday": [
+        0,
+        0
+      ],
+      "conf": 1,
+      "usn": 0,
+      "desc": "",
+      "dyn": 0,
+      "collapsed": false,
+      "extendNew": 10,
+      "extendRev": 50,
+      "id": 1,
+      "name": "Default",
+      "mod": 1600432663
+    },
+    "1596992405271": {
+      "id": 1596992405271,
+      "mod": 1600432663,
+      "name": "Misc::[Shared] Ultimate Spanish Conjugation",
+      "usn": -1,
+      "lrnToday": [
+        1079,
+        0
+      ],
+      "revToday": [
+        1079,
+        0
+      ],
+      "newToday": [
+        1079,
+        0
+      ],
+      "timeToday": [
+        1079,
+        0
+      ],
+      "collapsed": false,
+      "browserCollapsed": false,
+      "desc": "Please see the <a href='https://ankiweb.net/shared/info/638411848'>shared deck page</a> for more info.",
+      "dyn": 0,
+      "mid": 1596992551063,
+      "conf": 1,
+      "extendNew": 7,
+      "extendRev": 0
+    }
+  },
+  "dconf": {
+    "1": {
+      "name": "Default",
+      "new": {
+        "delays": [
+          1,
+          10
+        ],
+        "ints": [
+          1,
+          4,
+          7
+        ],
+        "initialFactor": 2500,
+        "separate": true,
+        "order": 1,
+        "perDay": 20,
+        "bury": false
+      },
+      "lapse": {
+        "delays": [
+          10
+        ],
+        "mult": 0,
+        "minInt": 1,
+        "leechFails": 8,
+        "leechAction": 0
+      },
+      "rev": {
+        "perDay": 200,
+        "ease4": 1.3,
+        "fuzz": 0.05,
+        "minSpace": 1,
+        "ivlFct": 1,
+        "maxIvl": 36500,
+        "bury": false,
+        "hardFactor": 1.2
+      },
+      "maxTaken": 60,
+      "timer": 0,
+      "autoplay": true,
+      "replayq": true,
+      "mod": 0,
+      "usn": 0,
+      "id": 1
+    }
+  }
+}

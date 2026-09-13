@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usc-deck"
+version = "1.0.0"
+description = "Generator for the Ultimate Spanish Conjugation Anki deck"
+requires-python = ">=3.7"
+dependencies = []
+
+[project.scripts]
+usc = "usc.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["usc"]
