@@ -21,7 +21,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
-from usc import build, collection, packaging, render, verify  # noqa: E402
+from usc import build, collection, packaging, render, tts, verify  # noqa: E402
 from usc.source import DeckSource  # noqa: E402
 
 #: sha256 over the schema and every row of the reference collection.
@@ -122,6 +122,77 @@ class BuildTest(unittest.TestCase):
         second = build.build(os.path.join(self.workdir.name, "deck2.apkg"))
         with open(self.apkg, "rb") as first_file, open(second, "rb") as second_file:
             self.assertEqual(first_file.read(), second_file.read())
+
+
+class TtsTest(unittest.TestCase):
+    """The optional --tts variant: it speaks the form, and only that."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.source = tts.with_tts(DeckSource.load())
+        cls.workdir = tempfile.TemporaryDirectory()
+        apkg = build.build(os.path.join(cls.workdir.name, "tts.apkg"), cls.source)
+        cls.collection = packaging.extract_entry(
+            apkg, packaging.COLLECTION_ENTRY,
+            os.path.join(cls.workdir.name, packaging.COLLECTION_ENTRY))
+        cls.notes = collection.dump_tables(cls.collection)["notes"]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.workdir.cleanup()
+
+    def _model(self):
+        import json
+        import sqlite3
+
+        connection = sqlite3.connect(self.collection)
+        try:
+            models = json.loads(connection.execute("SELECT models FROM col").fetchone()[0])
+        finally:
+            connection.close()
+        return next(iter(models.values()))
+
+    def test_note_type_gains_a_speech_field(self):
+        fields = [field["name"] for field in self._model()["flds"]]
+        self.assertEqual(fields, ["UUID", "Prompt", "Similar", "Notes", tts.SPEECH_FIELD])
+
+    def test_back_template_speaks_and_front_stays_silent(self):
+        template = self._model()["tmpls"][0]
+        self.assertIn("{{tts es_ES:Speech}}", template["afmt"])
+        self.assertIn("{{#Speech}}", template["afmt"])
+        self.assertNotIn("tts", template["qfmt"])
+
+    def test_every_conjugation_card_speaks_its_form(self):
+        silent = 0
+        for row, record in zip(self.notes, self.source.notes):
+            speech = row[6].split(render.FIELD_SEPARATOR)[4]
+            if record["verb"] is None:
+                silent += 1
+                self.assertEqual(speech, "")
+            else:
+                self.assertTrue(speech)
+                self.assertNotIn("<", speech)
+                self.assertNotIn("|", speech)
+        self.assertEqual(silent, 7)  # the orientation cards
+
+    def test_variants_are_spoken_as_a_list(self):
+        self.assertEqual(tts.speech_text(
+            {"verb": "ser", "prompt": {"answer": "fuera | fuese"}}), "fuera, fuese")
+
+    def test_content_fields_are_untouched(self):
+        for row, record in zip(self.notes, self.source.notes):
+            fields = row[6].split(render.FIELD_SEPARATOR)
+            self.assertEqual(fields[0], record["uuid"])
+            self.assertEqual(len(fields), 5)
+
+    def test_base_build_is_unaffected(self):
+        source = DeckSource.load()
+        self.assertFalse(source.speech)
+        with tempfile.TemporaryDirectory() as workdir:
+            apkg = build.build(os.path.join(workdir, "deck.apkg"), source)
+            path = packaging.extract_entry(
+                apkg, packaging.COLLECTION_ENTRY, os.path.join(workdir, "collection.anki2"))
+            self.assertEqual(collection.fingerprint(path), REFERENCE_FINGERPRINT)
 
 
 @unittest.skipUnless(REFERENCE_APKG, "set USC_REFERENCE_APKG to the published deck")

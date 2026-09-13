@@ -102,6 +102,8 @@ class DeckSource:
         self.templates = templates
         self.notes = notes
         self.verbs_by_name = {verb["infinitive"]: verb for verb in verbs}
+        #: Set by ``usc.tts.with_tts``: render the extra ``Speech`` field.
+        self.speech = False
 
     @classmethod
     def load(cls) -> "DeckSource":

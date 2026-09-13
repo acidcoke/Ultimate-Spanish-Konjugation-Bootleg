@@ -10,7 +10,7 @@ import re
 import sqlite3
 from typing import Any, Dict, List, Sequence, Tuple
 
-from . import anki_schema, render
+from . import anki_schema, render, tts
 from .source import DeckSource
 
 # Anki's ``stripHTMLMedia`` (anki/utils.py), used to fill the ``sfld`` column
@@ -56,6 +56,8 @@ def build_rows(source: DeckSource) -> Tuple[List[Tuple[Any, ...]], List[Tuple[An
     cards: List[Tuple[Any, ...]] = []
     for position, record in enumerate(source.notes):
         fields = render.render_fields(record, source.templates, source.verbs_by_name)
+        if source.speech:
+            fields.append(tts.speech_text(record))
         note_id = note_base + position
         notes.append(
             (
