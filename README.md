@@ -91,6 +91,20 @@ answered sentence on the back:
 * the seven orientation cards, whose text is English, stay silent: their
   `Speech` field is empty and the `{{#Speech}}` conditional drops the tag.
 
+### Voices, and AnkiDroid
+
+The `{{tts}}` tag needs Anki 2.1.20+, AnkiMobile 2.0.56+ or **AnkiDroid
+2.17+**, and it speaks through the voices installed on the device -- on
+Android, a TTS engine with Spanish data (Settings › Accessibility ›
+Text-to-speech output). No voice for the language means a silent card and a
+"no voice found" error, not a fallback.
+
+`--tts-voices` names are platform specific (`Apple_Mónica` on macOS/iOS,
+`Microsoft_Helena` on Windows); Anki picks the first one in the list that
+exists on the device. Build **without** `--tts-voices` for a deck that also
+works on Android: the language alone (`es_ES`) lets each platform pick its
+own Spanish voice. If you do pin voices, list one per platform you use.
+
 Nothing else changes: the `UUID`, `Prompt`, `Similar` and `Notes` fields, the
 note guids, the ids, the sort fields and the checksums are the same as in the
 published deck, so the variant updates an existing collection rather than
