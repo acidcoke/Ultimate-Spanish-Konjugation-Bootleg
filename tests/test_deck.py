@@ -93,10 +93,13 @@ class ParserTest(unittest.TestCase):
 
 
 class BuildTest(unittest.TestCase):
+    """``--reference``: the deck exactly as published."""
+
     @classmethod
     def setUpClass(cls):
         cls.workdir = tempfile.TemporaryDirectory()
-        cls.apkg = build.build(os.path.join(cls.workdir.name, "deck.apkg"))
+        cls.apkg = build.build(os.path.join(cls.workdir.name, "deck.apkg"),
+                               build.reference_source())
         cls.collection = packaging.extract_entry(
             cls.apkg, packaging.COLLECTION_ENTRY,
             os.path.join(cls.workdir.name, packaging.COLLECTION_ENTRY))
@@ -119,7 +122,8 @@ class BuildTest(unittest.TestCase):
                          [packaging.COLLECTION_ENTRY, packaging.MEDIA_ENTRY])
 
     def test_build_is_deterministic(self):
-        second = build.build(os.path.join(self.workdir.name, "deck2.apkg"))
+        second = build.build(os.path.join(self.workdir.name, "deck2.apkg"),
+                             build.reference_source())
         with open(self.apkg, "rb") as first_file, open(second, "rb") as second_file:
             self.assertEqual(first_file.read(), second_file.read())
 
@@ -259,11 +263,51 @@ class HypotheticalFormsTest(unittest.TestCase):
                             for part in record["notes"] if isinstance(part, dict)))
 
 
+class DefaultBuildTest(unittest.TestCase):
+    """A plain ``build``: no hypothetical forms, and the form is spoken."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.workdir = tempfile.TemporaryDirectory()
+        apkg = build.build(os.path.join(cls.workdir.name, "deck.apkg"))
+        cls.collection = packaging.extract_entry(
+            apkg, packaging.COLLECTION_ENTRY,
+            os.path.join(cls.workdir.name, packaging.COLLECTION_ENTRY))
+        cls.notes = collection.dump_tables(cls.collection)["notes"]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.workdir.cleanup()
+
+    def test_the_default_deck_carries_both_changes(self):
+        for row in self.notes:
+            self.assertNotIn("hypothetical", row[6])
+            self.assertEqual(len(row[6].split(render.FIELD_SEPARATOR)), 5)
+
+    def test_the_default_deck_is_not_the_published_one(self):
+        self.assertNotEqual(collection.fingerprint(self.collection),
+                            REFERENCE_FINGERPRINT)
+
+    def test_reference_option_still_reproduces_the_published_deck(self):
+        with tempfile.TemporaryDirectory() as workdir:
+            apkg = build.build(os.path.join(workdir, "reference.apkg"),
+                               build.reference_source())
+            path = packaging.extract_entry(
+                apkg, packaging.COLLECTION_ENTRY, os.path.join(workdir, "collection.anki2"))
+            self.assertEqual(collection.fingerprint(path), REFERENCE_FINGERPRINT)
+
+    def test_cli_flags_turn_each_change_off(self):
+        plain = build.make_source(keep_hypothetical=True, speech=False)
+        self.assertFalse(plain.speech)
+        self.assertEqual(plain.notes, DeckSource.load().notes)
+
+
 @unittest.skipUnless(REFERENCE_APKG, "set USC_REFERENCE_APKG to the published deck")
 class ReferenceDeckTest(unittest.TestCase):
     def test_matches_reference_deck(self):
         with tempfile.TemporaryDirectory() as workdir:
-            apkg = build.build(os.path.join(workdir, "deck.apkg"))
+            apkg = build.build(os.path.join(workdir, "deck.apkg"),
+                               build.reference_source())
             differences = verify.compare(apkg, REFERENCE_APKG)
         self.assertEqual(differences, [])
 
