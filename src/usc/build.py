@@ -6,7 +6,7 @@ import os
 import tempfile
 
 from . import collection as collection_module
-from . import packaging, tts
+from . import packaging, tts, variants
 from .source import DeckSource, REPO_ROOT
 
 DEFAULT_OUTPUT = os.path.join(REPO_ROOT, "dist", "Ultimate_Spanish_Conjugation.apkg")
@@ -26,6 +26,8 @@ def main(argv=None) -> int:
 
     parser = argparse.ArgumentParser(description="Build the Anki deck from data/")
     parser.add_argument("-o", "--output", default=DEFAULT_OUTPUT, help="output .apkg path")
+    parser.add_argument("--no-hypothetical", action="store_true",
+                        help="drop the hypothetical regular forms from the notes")
     parser.add_argument("--tts", action="store_true",
                         help="have the back of each card speak the Spanish form")
     parser.add_argument("--tts-lang", default=tts.DEFAULT_LANG,
@@ -38,6 +40,9 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     source = DeckSource.load()
+    if args.no_hypothetical:
+        source = variants.without_hypothetical_forms(source)
+        print("dropped the hypothetical regular forms")
     if args.tts:
         source = tts.with_tts(source, lang=args.tts_lang, voices=args.tts_voices,
                               speed=args.tts_speed)

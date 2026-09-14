@@ -21,7 +21,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
-from usc import build, collection, packaging, render, tts, verify  # noqa: E402
+from usc import build, collection, packaging, render, tts, variants, verify  # noqa: E402
 from usc.source import DeckSource  # noqa: E402
 
 #: sha256 over the schema and every row of the reference collection.
@@ -193,6 +193,70 @@ class TtsTest(unittest.TestCase):
             path = packaging.extract_entry(
                 apkg, packaging.COLLECTION_ENTRY, os.path.join(workdir, "collection.anki2"))
             self.assertEqual(collection.fingerprint(path), REFERENCE_FINGERPRINT)
+
+
+class HypotheticalFormsTest(unittest.TestCase):
+    """--no-hypothetical: the invented forms go, the real ones stay."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.base = DeckSource.load()
+        cls.source = variants.without_hypothetical_forms(cls.base)
+        cls.workdir = tempfile.TemporaryDirectory()
+        apkg = build.build(os.path.join(cls.workdir.name, "trimmed.apkg"), cls.source)
+        cls.collection = packaging.extract_entry(
+            apkg, packaging.COLLECTION_ENTRY,
+            os.path.join(cls.workdir.name, packaging.COLLECTION_ENTRY))
+        cls.notes = collection.dump_tables(cls.collection)["notes"]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.workdir.cleanup()
+
+    def test_no_card_shows_an_invented_form(self):
+        for row in self.notes:
+            self.assertNotIn("hypothetical", row[6])
+            self.assertNotIn("wrong_conj", row[6])
+
+    def test_the_regularity_note_keeps_its_verdict(self):
+        trimmed = [row for row in self.notes if "SECTION_regularity" in row[6]]
+        self.assertTrue(trimmed)
+        for row in trimmed:
+            notes_field = row[6].split(render.FIELD_SEPARATOR)[3]
+            self.assertNotIn("incorrect", notes_field)
+        self.assertIn('<span class="note_feature">Irregular form</span>.',
+                      "".join(row[6] for row in self.notes[:200]))
+
+    def test_only_the_affected_notes_change(self):
+        changed = [index for index, (record, original)
+                   in enumerate(zip(self.source.notes, self.base.notes))
+                   if record != original]
+        self.assertEqual(len(changed), 1297)  # 1296 regularity notes + orientation card 5
+
+    def test_ids_guids_and_tags_are_untouched(self):
+        for record, original in zip(self.source.notes, self.base.notes):
+            self.assertEqual(record["guid"], original["guid"])
+            self.assertEqual(record["uuid"], original["uuid"])
+            self.assertEqual(record["tags"], original["tags"])
+            self.assertEqual(record["mod"], original["mod"])
+
+    def test_composes_with_tts(self):
+        both = tts.with_tts(variants.without_hypothetical_forms(DeckSource.load()))
+        self.assertTrue(both.speech)
+        with tempfile.TemporaryDirectory() as workdir:
+            apkg = build.build(os.path.join(workdir, "both.apkg"), both)
+            path = packaging.extract_entry(
+                apkg, packaging.COLLECTION_ENTRY, os.path.join(workdir, "collection.anki2"))
+            rows = collection.dump_tables(path)["notes"]
+        for row in rows:
+            fields = row[6].split(render.FIELD_SEPARATOR)
+            self.assertEqual(len(fields), 5)
+            self.assertNotIn("hypothetical", row[6])
+
+    def test_source_data_is_not_modified(self):
+        self.assertTrue(any("hypothetical" in part["html"]
+                            for record in DeckSource.load().notes
+                            for part in record["notes"] if isinstance(part, dict)))
 
 
 @unittest.skipUnless(REFERENCE_APKG, "set USC_REFERENCE_APKG to the published deck")
