@@ -49,6 +49,7 @@ over the schema and every row, and is independent of that page layout.
 | --- | --- |
 | `python -m usc build [-o OUT]` | build the `.apkg` from `data/` and `assets/` |
 | `python -m usc build --tts` | same deck, with the Spanish form read aloud |
+| `python -m usc build --no-hypothetical` | same deck, without the hypothetical regular forms |
 | `python -m usc verify REF [-g GEN]` | compare a generated `.apkg` with a reference one |
 | `python -m usc extract REF` | rebuild `data/` and `assets/` from a reference `.apkg` |
 
@@ -117,6 +118,31 @@ its note type first.
 build` without it still reproduces the published deck 1:1, and the test suite
 checks both.
 
+## Dropping the hypothetical regular forms
+
+1296 of the notes explain an irregularity by naming the form the verb *would*
+have if it were regular:
+
+> **Irregular form**: the hypothetical regular form *so* is incorrect.
+
+`--no-hypothetical` removes that clause and keeps the verdict:
+
+> **Irregular form**.
+
+> The forms *fuera* and *fuese* are both **irregular**.
+
+The orientation card that shows off the note format carries the same sentence
+as an example, so it is trimmed too — afterwards no card in the deck displays
+a form that does not exist. Everything else is untouched: guids, ids, tags,
+timestamps and the other fields are the same as in the published deck, so the
+variant updates an existing collection instead of duplicating it.
+
+The options compose, and both are build options rather than edits to `data/`:
+
+```sh
+PYTHONPATH=src python -m usc build --no-hypothetical --tts -o dist/deck.apkg
+```
+
 ## Layout
 
 ```
@@ -128,6 +154,7 @@ src/usc/
   packaging.py     writing the .apkg zip
   build.py         source data -> .apkg
   tts.py           the optional text-to-speech variant
+  variants.py      optional content variants (--no-hypothetical)
   extract.py       reference .apkg -> source data, with a per-note round-trip check
   verify.py        1:1 comparison of two .apkg files
 data/
