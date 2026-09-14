@@ -2,14 +2,24 @@
 
 Python that generates the *Ultimate Spanish Conjugation* Anki deck
 ([AnkiWeb 638411848](https://ankiweb.net/shared/info/638411848)) from plain
-source data, and proves the result matches the published deck 1:1.
+source data. One command builds it ([GENERATE.md](GENERATE.md)):
 
 ```
 $ PYTHONPATH=src python -m usc build
+hypothetical regular forms: dropped
+text-to-speech: {{tts es_ES:Speech}}
 notes: 4246  cards: 4246
-wrote dist/Ultimate_Spanish_Conjugation.apkg (779822 bytes)
+wrote dist/Ultimate_Spanish_Conjugation.apkg (783785 bytes)
+```
 
+That is the customised deck: no hypothetical regular forms in the notes, and
+the Spanish form read aloud on the back of every conjugation card. Pass
+`--reference` for the deck exactly as published, which is what `verify`
+checks, rebuilding it from `data/`:
+
+```
 $ PYTHONPATH=src python -m usc verify Ultimate_Spanish_Conjugation.apkg
+built the reference deck from data/
 generated collection fingerprint: 1d3dfce93b3381116a46abdba424e15db1d6c43247aa404b0df290829af9fa34
 reference collection fingerprint: 1d3dfce93b3381116a46abdba424e15db1d6c43247aa404b0df290829af9fa34
 
@@ -20,8 +30,9 @@ Standard library only — no Anki, no `genanki`, no third-party packages.
 
 ## What "1:1" means here
 
-`python -m usc verify` compares the generated `.apkg` with the reference one
-and reports every difference:
+`python -m usc verify` builds the deck from `data/` with `--reference`,
+compares it with the published `.apkg`, and reports every difference (pass
+`-g` to check a deck you built yourself instead):
 
 * **the package** — same zip entries in the same order (`collection.anki2`,
   `media`), same compression method, same timestamps, same unix permissions;
@@ -47,10 +58,11 @@ over the schema and every row, and is independent of that page layout.
 
 | command | what it does |
 | --- | --- |
-| `python -m usc build [-o OUT]` | build the `.apkg` from `data/` and `assets/` |
-| `python -m usc build --tts` | same deck, with the Spanish form read aloud |
-| `python -m usc build --no-hypothetical` | same deck, without the hypothetical regular forms |
-| `python -m usc verify REF [-g GEN]` | compare a generated `.apkg` with a reference one |
+| `python -m usc build [-o OUT]` | build the customised `.apkg` from `data/` and `assets/` |
+| `python -m usc build --reference` | build the deck exactly as published |
+| `python -m usc build --keep-hypothetical` | keep the hypothetical regular forms |
+| `python -m usc build --no-tts` | leave the cards silent |
+| `python -m usc verify REF [-g GEN]` | compare the deck built from `data/` with a reference one |
 | `python -m usc extract REF` | rebuild `data/` and `assets/` from a reference `.apkg` |
 
 Run them from the repository root with `src/` on the path:
@@ -71,18 +83,18 @@ USC_REFERENCE_APKG=path/to/Ultimate_Spanish_Conjugation.apkg \
 
 ## Text to speech
 
-`--tts` builds a variant whose cards say the answer -- the conjugated Spanish
-form -- through Anki's built-in text to speech (Anki 2.1.20+, AnkiDroid
-2.16+, AnkiMobile; it uses the voices installed on the device, so nothing is
-downloaded and the deck still ships no media):
+The cards say the answer -- the conjugated Spanish form -- through
+Anki's built-in text to speech. It uses the voices installed on the device,
+so nothing is downloaded and the deck still ships no media:
 
 ```sh
-PYTHONPATH=src python -m usc build --tts -o dist/Ultimate_Spanish_Conjugation_TTS.apkg
-PYTHONPATH=src python -m usc build --tts --tts-voices Apple_Mónica,Microsoft_Helena
-PYTHONPATH=src python -m usc build --tts --tts-lang es_MX --tts-speed 0.8
+PYTHONPATH=src python -m usc build                              # spoken (default)
+PYTHONPATH=src python -m usc build --no-tts                     # silent
+PYTHONPATH=src python -m usc build --tts-lang es_MX --tts-speed 0.8
+PYTHONPATH=src python -m usc build --tts-voices Apple_Mónica,Microsoft_Helena
 ```
 
-The variant adds a `Speech` field holding the bare form, and puts
+The deck adds a `Speech` field holding the bare form, and puts
 `{{#Speech}}<div class="tts">{{tts es_ES:Speech}}</div>{{/Speech}}` under the
 answered sentence on the back:
 
@@ -114,8 +126,8 @@ of the original deck asks Anki to update that note type; on Anki versions old
 enough to refuse a changed note type (pre-2.1.50), remove the old deck and
 its note type first.
 
-`--tts` is a build option, not a change to the source data: `python -m usc
-build` without it still reproduces the published deck 1:1, and the test suite
+Text to speech is applied at build time, not stored in `data/`: `python -m usc
+build --reference` still reproduces the published deck 1:1, and the test suite
 checks both.
 
 ## Dropping the hypothetical regular forms
@@ -125,7 +137,8 @@ have if it were regular:
 
 > **Irregular form**: the hypothetical regular form *so* is incorrect.
 
-`--no-hypothetical` removes that clause and keeps the verdict:
+The deck removes that clause and keeps the verdict (`--keep-hypothetical`
+leaves the notes as published):
 
 > **Irregular form**.
 
@@ -137,10 +150,13 @@ a form that does not exist. Everything else is untouched: guids, ids, tags,
 timestamps and the other fields are the same as in the published deck, so the
 variant updates an existing collection instead of duplicating it.
 
-The options compose, and both are build options rather than edits to `data/`:
+Both changes are build options rather than edits to `data/`, and each can be
+turned off on its own:
 
 ```sh
-PYTHONPATH=src python -m usc build --no-hypothetical --tts -o dist/deck.apkg
+PYTHONPATH=src python -m usc build --keep-hypothetical   # only the speech
+PYTHONPATH=src python -m usc build --no-tts              # only the trimming
+PYTHONPATH=src python -m usc build --reference           # neither: the deck as published
 ```
 
 ## Layout
@@ -153,8 +169,8 @@ src/usc/
   collection.py    writing collection.anki2, sort fields, checksums
   packaging.py     writing the .apkg zip
   build.py         source data -> .apkg
-  tts.py           the optional text-to-speech variant
-  variants.py      optional content variants (--no-hypothetical)
+  tts.py           the text-to-speech variant
+  variants.py      content variants (dropping the hypothetical forms)
   extract.py       reference .apkg -> source data, with a per-note round-trip check
   verify.py        1:1 comparison of two .apkg files
 data/

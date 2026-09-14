@@ -114,19 +114,26 @@ def summary(generated_path: str, reference_path: str) -> Dict[str, Any]:
 def main(argv=None) -> int:
     import argparse
 
-    from .build import DEFAULT_OUTPUT
+    from . import build as build_module
 
     parser = argparse.ArgumentParser(
         description="Check a generated .apkg against the reference deck")
     parser.add_argument("reference", help="the reference .apkg")
-    parser.add_argument("-g", "--generated", default=DEFAULT_OUTPUT,
-                        help="the generated .apkg (default: %s)" % DEFAULT_OUTPUT)
+    parser.add_argument("-g", "--generated", default=None,
+                        help="the .apkg to check (default: build one from data/ with "
+                             "--reference, the deck as published)")
     args = parser.parse_args(argv)
 
-    differences = compare(args.generated, args.reference)
-    fingerprints = summary(args.generated, args.reference)
-    print("generated collection fingerprint: %s" % fingerprints["generated"])
-    print("reference collection fingerprint: %s" % fingerprints["reference"])
+    with tempfile.TemporaryDirectory() as workdir:
+        generated = args.generated
+        if generated is None:
+            generated = build_module.build(os.path.join(workdir, "reference.apkg"),
+                                           build_module.reference_source())
+            print("built the reference deck from data/")
+        differences = compare(generated, args.reference)
+        fingerprints = summary(generated, args.reference)
+        print("generated collection fingerprint: %s" % fingerprints["generated"])
+        print("reference collection fingerprint: %s" % fingerprints["reference"])
     if differences:
         print("\nDIFFERENCES (%d):" % len(differences))
         for difference in differences:
