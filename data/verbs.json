@@ -1,0 +1,422 @@
+[
+  {
+    "infinitive": "ser",
+    "dle_slug": "ser",
+    "summary": " : extreme irregularity, #10 in the deck out of 59 dissonant verbs, 41 counts (74%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "haber",
+    "dle_slug": "haber",
+    "summary": " : extreme irregularity, #1 in the deck out of 59 dissonant verbs, 45 counts (83%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "estar",
+    "dle_slug": "estar",
+    "summary": " : high irregularity, #15 in the deck out of 59 dissonant verbs, 29 counts (54%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "hablar",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/hablar?m=form#conjugacion\">hablar</a></span> is a <span class=\"note_feature\">regular verb in -ar</span>"
+  },
+  {
+    "infinitive": "deber",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/deber?m=form#conjugacion\">deber</a></span> is a <span class=\"note_feature\">regular verb in -er</span>"
+  },
+  {
+    "infinitive": "vivir",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/vivir?m=form#conjugacion\">vivir</a></span> is a <span class=\"note_feature\">regular verb in -ir</span>"
+  },
+  {
+    "infinitive": "tener",
+    "dle_slug": "tener",
+    "summary": " : extreme irregularity, #5 in the deck out of 59 dissonant verbs, 44 counts (79%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">11</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "decir",
+    "dle_slug": "decir",
+    "summary": " : extreme irregularity, #2 in the deck out of 59 dissonant verbs, 46 counts (82%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "hacer",
+    "dle_slug": "hacer",
+    "summary": " : extreme irregularity, #6 in the deck out of 59 dissonant verbs, 42 counts (75%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">6</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "poder",
+    "dle_slug": "poder",
+    "summary": " : extreme irregularity, #6 in the deck out of 59 dissonant verbs, 42 counts (75%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "ir",
+    "dle_slug": "ir",
+    "summary": " : extreme irregularity, #6 in the deck out of 59 dissonant verbs, 42 counts (76%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "dar",
+    "dle_slug": "dar",
+    "summary": " : high irregularity, #26 in the deck out of 59 dissonant verbs, 24 counts (44%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "ver",
+    "dle_slug": "ver",
+    "summary": " : moderate irregularity, #29 in the deck out of 59 dissonant verbs, 20 counts (37%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">6</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "saber",
+    "dle_slug": "saber",
+    "summary": " : extreme irregularity, #12 in the deck out of 59 dissonant verbs, 40 counts (71%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "querer",
+    "dle_slug": "querer",
+    "summary": " : extreme irregularity, #10 in the deck out of 59 dissonant verbs, 41 counts (73%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "creer",
+    "dle_slug": "creer",
+    "summary": " : low irregularity, #58 in the deck out of 59 dissonant verbs, 1 counts (2%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">10</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "poner",
+    "dle_slug": "poner",
+    "summary": " : extreme irregularity, #6 in the deck out of 59 dissonant verbs, 42 counts (75%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">26</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "parecer",
+    "dle_slug": "parecer",
+    "summary": " : low irregularity, #55 in the deck out of 59 dissonant verbs, 10 counts (18%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">246</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "seguir",
+    "dle_slug": "seguir",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">43</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "pensar",
+    "dle_slug": "pensar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">150</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "venir",
+    "dle_slug": "venir",
+    "summary": " : extreme irregularity, #4 in the deck out of 59 dissonant verbs, 45 counts (80%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">19</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "encontrar",
+    "dle_slug": "encontrar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">128</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "salir",
+    "dle_slug": "salir",
+    "summary": " : moderate irregularity, #27 in the deck out of 59 dissonant verbs, 23 counts (41%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">3</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "volver",
+    "dle_slug": "volver",
+    "summary": " : low irregularity, #35 in the deck out of 59 dissonant verbs, 12 counts (21%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">33</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "sentir",
+    "dle_slug": "sentir",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">46</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "producir",
+    "dle_slug": "producir",
+    "summary": " : high irregularity, #25 in the deck out of 59 dissonant verbs, 28 counts (50%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">16</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "buscar",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/buscar?m=form#conjugacion\">buscar</a></span> is a <span class=\"note_feature\">regular verb in -ar</span>"
+  },
+  {
+    "infinitive": "oír",
+    "dle_slug": "oír",
+    "summary": " : moderate irregularity, #32 in the deck out of 59 dissonant verbs, 13 counts (23%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "entender",
+    "dle_slug": "entender",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">30</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "morir",
+    "dle_slug": "morir",
+    "summary": " : high irregularity, #16 in the deck out of 59 dissonant verbs, 30 counts (54%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">5</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "caer",
+    "dle_slug": "caer",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "jugar",
+    "dle_slug": "jugar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "elegir",
+    "dle_slug": "elegir",
+    "summary": " : high irregularity, #16 in the deck out of 59 dissonant verbs, 30 counts (54%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">43</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "traer",
+    "dle_slug": "traer",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">12</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "andar",
+    "dle_slug": "andar",
+    "summary": " : moderate irregularity, #30 in the deck out of 59 dissonant verbs, 18 counts (32%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "incluir",
+    "dle_slug": "incluir",
+    "summary": " : moderate irregularity, #32 in the deck out of 59 dissonant verbs, 13 counts (23%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">57</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "valer",
+    "dle_slug": "valer",
+    "summary": " : moderate irregularity, #28 in the deck out of 59 dissonant verbs, 22 counts (39%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">3</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "reunir",
+    "dle_slug": "reunir",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "actuar",
+    "dle_slug": "actuar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">47</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "caber",
+    "dle_slug": "caber",
+    "summary": " : extreme irregularity, #12 in the deck out of 59 dissonant verbs, 40 counts (71%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "enviar",
+    "dle_slug": "enviar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">97</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "adquirir",
+    "dle_slug": "adquirir",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "coger",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/coger?m=form#conjugacion\">coger</a></span> is a <span class=\"note_feature\">regular verb in -er</span>"
+  },
+  {
+    "infinitive": "sonreír",
+    "dle_slug": "sonreír",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">7</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "prohibir",
+    "dle_slug": "prohibir",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "oler",
+    "dle_slug": "oler",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "asir",
+    "dle_slug": "asir",
+    "summary": " : low irregularity, #55 in the deck out of 59 dissonant verbs, 10 counts (18%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "lucir",
+    "dle_slug": "lucir",
+    "summary": " : low irregularity, #55 in the deck out of 59 dissonant verbs, 10 counts (18%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">7</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "aislar",
+    "dle_slug": "aislar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">27</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "adecuar",
+    "dle_slug": "adecuar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">29</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "averiguar",
+    "dle_slug": "averiguar",
+    "summary": " : low irregularity, #58 in the deck out of 59 dissonant verbs, 1 counts (2%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">29</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "bendecir",
+    "dle_slug": "bendecir",
+    "summary": " : high irregularity, #14 in the deck out of 59 dissonant verbs, 34 counts (61%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "complacer",
+    "dle_slug": "complacer",
+    "summary": " : moderate irregularity, #32 in the deck out of 59 dissonant verbs, 13 counts (23%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">5</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "pudrir",
+    "dle_slug": "pudrir",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "predecir",
+    "dle_slug": "predecir",
+    "summary": " : extreme irregularity, #2 in the deck out of 59 dissonant verbs, 46 counts (82%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "yacer",
+    "dle_slug": "yacer",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "erguir",
+    "dle_slug": "erguir",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "aunar",
+    "dle_slug": "aunar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">14</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "rehusar",
+    "dle_slug": "rehusar",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "errar",
+    "dle_slug": "errar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "engullir",
+    "dle_slug": "engullir",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">29</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "discernir",
+    "dle_slug": "discernir",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "gruñir",
+    "dle_slug": "gruñir",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">29</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "endeudarse",
+    "dle_slug": "endeudarse",
+    "summary": " is 100% regular (55/55)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">8</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "delinquir",
+    "family": "<br><span class=\"dle_conj\"><a href=\"https://dle.rae.es/delinquir?m=form#conjugacion\">delinquir</a></span> is a <span class=\"note_feature\">regular verb in -ir</span>"
+  },
+  {
+    "infinitive": "argüir",
+    "dle_slug": "argüir",
+    "summary": " : moderate irregularity, #31 in the deck out of 59 dissonant verbs, 14 counts (25%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">57</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "reñir",
+    "dle_slug": "reñir",
+    "summary": " : high irregularity, #18 in the deck out of 59 dissonant verbs, 29 counts (52%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">12</span> other verbs with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "corroer",
+    "dle_slug": "corroer",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "tañer",
+    "dle_slug": "tañer",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "prohijar",
+    "dle_slug": "prohijar",
+    "summary": " is 100% regular (56/56)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">one</span> other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "raer",
+    "dle_slug": "raer",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br><span class=\"note_feature\">Unique verb.</span> The DLE has no other verb with this set of conjugation and spelling patterns."
+  },
+  {
+    "infinitive": "europeizar",
+    "dle_slug": "europeizar",
+    "summary": " : low irregularity, #36 in the deck out of 59 dissonant verbs, 11 counts (20%)",
+    "family": "<br>The DLE has <span class=\"verb_numbers\">4</span> other verbs with this set of conjugation and spelling patterns."
+  }
+]
