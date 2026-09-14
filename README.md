@@ -118,6 +118,42 @@ exists on the device. Build **without** `--tts-voices` for a deck that also
 works on Android: the language alone (`es_ES`) lets each platform pick its
 own Spanish voice. If you do pin voices, list one per platform you use.
 
+### "no players found for TTSTag(..., lang='es_ES', voices=[], ...)"
+
+That message -- on Windows usually, but the cause is the same everywhere --
+means Anki looked at the voices installed on the machine and none of them
+reports the language the tag asks for. Windows ships English voices only, so
+a fresh install has no Spanish one, and Anki matches the *whole* code: a
+Spanish (Mexico) voice reports `es_MX` and does **not** answer a
+`{{tts es_ES:…}}` tag. There is no fallback -- hence the error rather than a
+silent card.
+
+Three ways out, in order of preference:
+
+1. **Install a Spanish (Spain) voice**, then restart Anki. Windows 11:
+   Settings › Time & language › Speech › Manage voices › Add voices ›
+   *Spanish (Spain)*. Windows 10: Settings › Time & Language › Speech ›
+   Manage voices › Add voices. If Spanish is not offered there, add the
+   language first (Settings › Time & language › Language & region › Add a
+   language › *Spanish (Spain)*) and tick its **Speech** optional feature.
+2. **Match the deck to the voice you have.** If your Spanish voice is
+   Mexican (`Microsoft Sabina`, `Microsoft Raul`), rebuild and reimport with
+   that language instead:
+
+   ```sh
+   PYTHONPATH=src python -m usc build --tts-lang es_MX
+   ```
+
+   Anki only updates the note type and the template on import, so your
+   scheduling is kept.
+3. **Turn the speech off**: `PYTHONPATH=src python -m usc build --no-tts`,
+   then reimport.
+
+To see exactly what Anki can use, open Tools › Manage Note Types › the
+deck's note type › Cards…, and pick *Add TTS tag* from the `+` menu: the
+dialog lists every voice on the machine with its language code. No Spanish
+entry there means Windows has none installed, and step 1 is the fix.
+
 Nothing else changes: the `UUID`, `Prompt`, `Similar` and `Notes` fields, the
 note guids, the ids, the sort fields and the checksums are the same as in the
 published deck, so the variant updates an existing collection rather than
